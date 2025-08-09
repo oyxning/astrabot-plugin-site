@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试页面</title>
+</head>
+<body>
+    <h1>测试页面</h1>
+    <script src="data/loader.js"></script>
+    <script>
+        // 简单测试数据加载器
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const plugins = await dataLoader.getFeaturedPlugins();
+                console.log('插件数据加载成功:', plugins);
+                document.body.innerHTML += '<p>数据加载成功!</p>';
+            } catch (error) {
+                console.error('数据加载错误:', error);
+                document.body.innerHTML += '<p>数据加载错误: ' + error.message + '</p>';
+            }
+        });
+    </script>
+</body>
+</html>

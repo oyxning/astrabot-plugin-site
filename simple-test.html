@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单测试</title>
+</head>
+<body>
+    <h1>简单测试页面</h1>
+    <div id="test-result"></div>
+    <script src="data/loader.js"></script>
+    <script>
+        // 测试数据加载器
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const resultElement = document.getElementById('test-result');
+                resultElement.innerHTML = '正在测试...';
+
+                // 测试数据加载
+                const plugins = await dataLoader.getFeaturedPlugins();
+                resultElement.innerHTML += '<p>数据加载成功: ' + plugins.length + ' 个插件</p>';
+
+                // 测试showError函数
+                if (typeof showError === 'function') {
+                    resultElement.innerHTML += '<p>showError函数存在</p>';
+                } else {
+                    resultElement.innerHTML += '<p>showError函数不存在</p>';
+                }
+
+                // 测试performSearch函数
+                if (typeof performSearch === 'function') {
+                    resultElement.innerHTML += '<p>performSearch函数存在</p>';
+                } else {
+                    resultElement.innerHTML += '<p>performSearch函数不存在</p>';
+                }
+
+                resultElement.innerHTML += '<p>测试完成</p>';
+            } catch (error) {
+                console.error('测试错误:', error);
+                document.getElementById('test-result').innerHTML = '测试错误: ' + error.message;
+            }
+        });
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>

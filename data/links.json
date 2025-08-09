@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1",
+        "name": "AstrBot 官方网站",
+        "url": "https://www.astrbos.com",
+        "icon": "fas fa-globe"
+    },
+    {
+        "id": "2",
+        "name": "AstrBot GitHub",
+        "url": "https://github.com/astrabot",
+        "icon": "fab fa-github"
+    },
+    {
+        "id": "3",
+        "name": "开发者文档",
+        "url": "https://docs.astrabot.com",
+        "icon": "fas fa-book"
+    },
+    {
+        "id": "4",
+        "name": "社区论坛",
+        "url": "https://forum.astrabot.com",
+        "icon": "fas fa-comments"
+    },
+    {
+        "id": "5",
+        "name": "插件开发指南",
+        "url": "https://docs.astrabot.com/plugin-dev",
+        "icon": "fas fa-code"
+    }
+]
