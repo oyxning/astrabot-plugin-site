@@ -79,6 +79,16 @@ class DataLoader {
     }
 
     /**
+     * 根据ID获取作者
+     * @param {string} authorId - 作者ID
+     * @returns {Promise<Object|null>} 作者对象或null
+     */
+    async getAuthorById(authorId) {
+        const authors = await this.loadData('authors');
+        return authors.find(author => author.id === authorId) || null;
+    }
+
+    /**
      * 获取团队成员
      * @returns {Promise<Array>} 团队成员列表
      */

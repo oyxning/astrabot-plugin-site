@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AstrBot插件推荐</title>
+    <title>AstrBot插件推荐 - 友情链接</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -20,7 +20,7 @@
                 <a href="plugins.html" class="text-gray-600 hover:text-indigo-600 transition-colors">推荐插件</a>
                 <a href="authors.html" class="text-gray-600 hover:text-indigo-600 transition-colors">按作者浏览</a>
                 <a href="team.html" class="text-gray-600 hover:text-indigo-600 transition-colors">网站成员</a>
-                <a href="links.html" class="text-gray-600 hover:text-indigo-600 transition-colors">友情链接</a>
+                <a href="links.html" class="text-indigo-600 font-medium">友情链接</a>
                 <a href="guide.html" class="text-gray-600 hover:text-indigo-600 transition-colors">数据指南</a>
             </div>
             <div class="md:hidden">
@@ -34,7 +34,7 @@
             <a href="plugins.html" class="block py-2 text-gray-600 hover:text-indigo-600 transition-colors">推荐插件</a>
             <a href="authors.html" class="block py-2 text-gray-600 hover:text-indigo-600 transition-colors">按作者浏览</a>
             <a href="team.html" class="block py-2 text-gray-600 hover:text-indigo-600 transition-colors">网站成员</a>
-            <a href="links.html" class="block py-2 text-gray-600 hover:text-indigo-600 transition-colors">友情链接</a>
+            <a href="links.html" class="block py-2 text-indigo-600 font-medium">友情链接</a>
             <a href="guide.html" class="block py-2 text-gray-600 hover:text-indigo-600 transition-colors">数据指南</a>
         </div>
     </nav>
@@ -42,71 +42,20 @@
     <!-- 英雄区域 -->
     <header class="pt-24 pb-16 bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
         <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">发现最佳 AstrBot 插件</h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">为 AstrBot 框架增强功能，提升使用体验</p>
-            <div class="relative max-w-lg mx-auto">
-                <input type="text" id="search-input" placeholder="搜索插件..." class="w-full px-5 py-3 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-300 text-gray-800">
-                <button id="search-btn" class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-indigo-700 hover:bg-indigo-800 text-white px-4 py-1 rounded-full transition-colors">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">友情链接</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">探索与 AstrBot 相关的优质资源和合作伙伴</p>
         </div>
     </header>
 
     <main class="container mx-auto px-4 py-12">
-        <!-- 推荐插件区域 -->
-        <section id="featured" class="mb-16">
-            <div class="flex items-center mb-8">
-                <i class="fas fa-star text-yellow-500 text-2xl mr-3"></i>
-                <h2 class="text-3xl font-bold text-gray-800">推荐插件</h2>
-            </div>
-            <div id="featured-plugins" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- 插件卡片将通过JavaScript动态加载 -->
-                <div class="animate-pulse text-center py-16 col-span-full">
-                    <i class="fas fa-spinner text-4xl text-gray-400 mb-4"></i>
-                    <p class="text-gray-500">加载推荐插件中...</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 按作者浏览区域 -->
-        <section id="by-author" class="mb-16">
-            <div class="flex items-center mb-8">
-                <i class="fas fa-user text-indigo-500 text-2xl mr-3"></i>
-                <h2 class="text-3xl font-bold text-gray-800">按作者浏览</h2>
-            </div>
-            <div id="authors-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- 作者卡片将通过JavaScript动态加载 -->
-                <div class="animate-pulse text-center py-16 col-span-full">
-                    <i class="fas fa-spinner text-4xl text-gray-400 mb-4"></i>
-                    <p class="text-gray-500">加载作者列表中...</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 网站成员区域 -->
-        <section id="team" class="mb-16">
-            <div class="flex items-center mb-8">
-                <i class="fas fa-users text-green-500 text-2xl mr-3"></i>
-                <h2 class="text-3xl font-bold text-gray-800">网站成员</h2>
-            </div>
-            <div id="team-members" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- 成员卡片将通过JavaScript动态加载 -->
-                <div class="animate-pulse text-center py-16 col-span-full">
-                    <i class="fas fa-spinner text-4xl text-gray-400 mb-4"></i>
-                    <p class="text-gray-500">加载团队成员中...</p>
-                </div>
-            </div>
-        </section>
-
         <!-- 友情链接区域 -->
         <section id="links" class="mb-16">
             <div class="flex items-center mb-8">
                 <i class="fas fa-link text-blue-500 text-2xl mr-3"></i>
-                <h2 class="text-3xl font-bold text-gray-800">友情链接</h2>
+                <h2 class="text-3xl font-bold text-gray-800">合作伙伴与资源</h2>
             </div>
-            <div id="friend-links" class="flex flex-wrap gap-4">
-                <!-- 友情链接将通过JavaScript动态加载 -->
+            <div id="links-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 链接卡片将通过JavaScript动态加载 -->
                 <div class="animate-pulse text-center py-16 col-span-full">
                     <i class="fas fa-spinner text-4xl text-gray-400 mb-4"></i>
                     <p class="text-gray-500">加载友情链接中...</p>

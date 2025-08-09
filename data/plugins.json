@@ -2,109 +2,49 @@
     "featured": [
         {
             "id": "1",
-            "name": "AstrBot 翻译插件",
-            "description": "提供多语言翻译功能，支持文本和语音翻译，集成多种翻译引擎。",
-            "icon": "fa-language",
-            "rating": 4.8,
-            "reviews": 120,
-            "tags": ["翻译", "多语言", "实用工具"],
+            "name": "AstrBot 知识库插件",
+            "description": "一个用于AstrBot的知识库插件，帮助用户管理和查询知识库内容。",
             "authorId": "1",
-            "authorName": "张三",
-            "authorAvatar": "https://ui-avatars.com/api/?name=张三&background=0D8ABC&color=fff",
-            "githubUrl": "https://github.com/example/astrabot-translate"
+            "githubUrl": "https://github.com/lxfight/astrbot_plugin_knowledge_base",
+            "icon": "fa-book",
+            "rating": 5,
+            "reviews": 10,
+            "tags": ["知识库", "查询", "管理"]
         },
         {
             "id": "2",
-            "name": "AstrBot 天气插件",
-            "description": "实时天气查询和预报功能，支持全球城市，提供详细天气信息和提醒。",
-            "icon": "fa-cloud-sun",
-            "rating": 4.6,
-            "reviews": 95,
-            "tags": ["天气", "工具", "生活服务"],
+            "name": "AstrBot 反提示注入插件",
+            "description": "一个用于AstrBot的反提示注入插件，帮助保护机器人免受提示注入攻击。",
             "authorId": "2",
-            "authorName": "李四",
-            "authorAvatar": "https://ui-avatars.com/api/?name=李四&background=0D8ABC&color=fff",
-            "githubUrl": "https://github.com/example/astrabot-weather"
-        },
-        {
-            "id": "3",
-            "name": "AstrBot 代码助手",
-            "description": "提供代码自动补全、语法检查和代码解释功能，支持多种编程语言。",
-            "icon": "fa-code",
-            "rating": 4.9,
-            "reviews": 156,
-            "tags": ["编程", "开发工具", "代码辅助"],
-            "authorId": "3",
-            "authorName": "王五",
-            "authorAvatar": "https://ui-avatars.com/api/?name=王五&background=0D8ABC&color=fff",
-            "githubUrl": "https://github.com/example/astrabot-codehelper"
+            "githubUrl": "https://github.com/oyxning/astrbot_plugin_antipromptinjector",
+            "icon": "fa-shield-alt",
+            "rating": 5,
+            "reviews": 5,
+            "tags": ["安全", "防护", "反注入"]
         }
     ],
     "all": [
         {
             "id": "1",
-            "name": "AstrBot 翻译插件",
-            "description": "提供多语言翻译功能，支持文本和语音翻译，集成多种翻译引擎。",
-            "icon": "fa-language",
-            "rating": 4.8,
-            "reviews": 120,
-            "tags": ["翻译", "多语言", "实用工具"],
+            "name": "AstrBot 知识库插件",
+            "description": "一个用于AstrBot的知识库插件，帮助用户管理和查询知识库内容。",
             "authorId": "1",
-            "authorName": "张三",
-            "authorAvatar": "https://ui-avatars.com/api/?name=张三&background=0D8ABC&color=fff",
-            "githubUrl": "https://github.com/example/astrabot-translate"
+            "githubUrl": "https://github.com/lxfight/astrbot_plugin_knowledge_base",
+            "icon": "fa-book",
+            "rating": 5,
+            "reviews": 10,
+            "tags": ["知识库", "查询", "管理"]
         },
         {
             "id": "2",
-            "name": "AstrBot 天气插件",
-            "description": "实时天气查询和预报功能，支持全球城市，提供详细天气信息和提醒。",
-            "icon": "fa-cloud-sun",
-            "rating": 4.6,
-            "reviews": 95,
-            "tags": ["天气", "工具", "生活服务"],
+            "name": "AstrBot 反提示注入插件",
+            "description": "一个用于AstrBot的反提示注入插件，帮助保护机器人免受提示注入攻击。",
             "authorId": "2",
-            "authorName": "李四",
-            "authorAvatar": "https://ui-avatars.com/api/?name=李四&background=0D8ABC&color=fff",
-            "githubUrl": "https://github.com/example/astrabot-weather"
-        },
-        {
-            "id": "3",
-            "name": "AstrBot 代码助手",
-            "description": "提供代码自动补全、语法检查和代码解释功能，支持多种编程语言。",
-            "icon": "fa-code",
-            "rating": 4.9,
-            "reviews": 156,
-            "tags": ["编程", "开发工具", "代码辅助"],
-            "authorId": "3",
-            "authorName": "王五",
-            "authorAvatar": "https://ui-avatars.com/api/?name=王五&background=0D8ABC&color=fff",
-            "githubUrl": "https://github.com/example/astrabot-codehelper"
-        },
-        {
-            "id": "4",
-            "name": "AstrBot 音乐播放器",
-            "description": "在线音乐播放功能，支持多种音乐平台，提供个性化推荐。",
-            "icon": "fa-music",
-            "rating": 4.5,
-            "reviews": 78,
-            "tags": ["音乐", "娱乐", "多媒体"],
-            "authorId": "1",
-            "authorName": "张三",
-            "authorAvatar": "https://ui-avatars.com/api/?name=张三&background=0D8ABC&color=fff",
-            "githubUrl": "https://github.com/example/astrabot-music"
-        },
-        {
-            "id": "5",
-            "name": "AstrBot 备忘录",
-            "description": "简单实用的备忘录功能，支持分类、标签和搜索，数据云端同步。",
-            "icon": "fa-sticky-note",
-            "rating": 4.3,
-            "reviews": 65,
-            "tags": ["工具", " productivity", "笔记"],
-            "authorId": "2",
-            "authorName": "李四",
-            "authorAvatar": "https://ui-avatars.com/api/?name=李四&background=0D8ABC&color=fff",
-            "githubUrl": "https://github.com/example/astrabot-notes"
+            "githubUrl": "https://github.com/oyxning/astrbot_plugin_antipromptinjector",
+            "icon": "fa-shield-alt",
+            "rating": 5,
+            "reviews": 5,
+            "tags": ["安全", "防护", "反注入"]
         }
     ]
 }

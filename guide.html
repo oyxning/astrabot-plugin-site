@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstrBot插件推荐 - 数据管理指南</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="bg-white shadow-md fixed w-full z-10 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-rocket text-indigo-600 text-2xl mr-2"></i>
+                <h1 class="text-xl font-bold text-gray-800">AstrBot插件推荐</h1>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="plugins.html" class="text-gray-600 hover:text-indigo-600 transition-colors">推荐插件</a>
+                <a href="authors.html" class="text-gray-600 hover:text-indigo-600 transition-colors">按作者浏览</a>
+                <a href="team.html" class="text-gray-600 hover:text-indigo-600 transition-colors">网站成员</a>
+                <a href="links.html" class="text-gray-600 hover:text-indigo-600 transition-colors">友情链接</a>
+                <a href="guide.html" class="text-indigo-600 font-medium">数据指南</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-600 focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white px-4 py-2 pb-4">
+            <a href="plugins.html" class="block py-2 text-gray-600 hover:text-indigo-600 transition-colors">推荐插件</a>
+            <a href="authors.html" class="block py-2 text-gray-600 hover:text-indigo-600 transition-colors">按作者浏览</a>
+            <a href="team.html" class="block py-2 text-gray-600 hover:text-indigo-600 transition-colors">网站成员</a>
+            <a href="links.html" class="block py-2 text-gray-600 hover:text-indigo-600 transition-colors">友情链接</a>
+            <a href="guide.html" class="block py-2 text-indigo-600 font-medium">数据指南</a>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <header class="pt-24 pb-16 bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">数据管理指南</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">了解如何补充和管理插件和作者数据</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+        <!-- 指南内容 -->
+        <section class="mb-16 bg-white rounded-lg shadow-md p-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">如何添加作者数据</h2>
+            <p class="mb-4 text-gray-700">要添加作者数据，请编辑 <code class="bg-gray-100 px-2 py-1 rounded">data/authors.json</code> 文件，添加以下格式的作者信息：</p>
+            <div class="bg-gray-900 text-gray-100 p-4 rounded-lg mb-6 overflow-x-auto">
+                <pre>{<br>    "id": "唯一标识符",<br>    "name": "作者姓名",<br>    "avatar": "头像URL",<br>    "bio": "作者简介",<br>    "github": "GitHub链接",<br>    "twitter": "Twitter链接",<br>    "pluginCount": 插件数量<br>}</pre>
+            </div>
+            <p class="text-gray-700">示例：</p>
+            <div class="bg-gray-900 text-gray-100 p-4 rounded-lg mb-6 overflow-x-auto">
+                <pre>[<br>    {<br>        "id": "1",<br>        "name": "张三",<br>        "avatar": "https://ui-avatars.com/api/?name=张三&background=0D8ABC&color=fff",<br>        "bio": "资深AstrBot开发者，专注于实用工具类插件开发。",<br>        "github": "https://github.com/author-zhang",<br>        "twitter": "https://twitter.com/author-zhang",<br>        "pluginCount": 2<br>    }<br>]</pre>
+            </div>
+        </section>
+
+        <section class="mb-16 bg-white rounded-lg shadow-md p-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">如何添加插件数据</h2>
+            <p class="mb-4 text-gray-700">要添加插件数据，请编辑 <code class="bg-gray-100 px-2 py-1 rounded">data/plugins.json</code> 文件，添加以下格式的插件信息：</p>
+            <div class="bg-gray-900 text-gray-100 p-4 rounded-lg mb-6 overflow-x-auto">
+                <pre>{<br>    "featured": [<br>        {<br>            "id": "唯一标识符",<br>            "name": "插件名称",<br>            "description": "插件描述",<br>            "icon": "Font Awesome图标类名",<br>            "rating": 评分,<br>            "reviews": 评论数量,<br>            "tags": ["标签1", "标签2"],<br>            "authorId": "作者ID",<br>            "authorName": "作者姓名",<br>            "authorAvatar": "作者头像URL",<br>            "githubUrl": "GitHub链接"<br>        }<br>    ],<br>    "all": [<br>        // 所有插件列表，格式同上<br>    ]<br>}</pre>
+            </div>
+            <p class="text-gray-700">示例：</p>
+            <div class="bg-gray-900 text-gray-100 p-4 rounded-lg mb-6 overflow-x-auto">
+                <pre>{<br>    "featured": [<br>        {<br>            "id": "1",<br>            "name": "AstrBot 翻译插件",<br>            "description": "提供多语言翻译功能，支持文本和语音翻译，集成多种翻译引擎。",<br>            "icon": "fa-language",<br>            "rating": 4.8,<br>            "reviews": 120,<br>            "tags": ["翻译", "多语言", "实用工具"],<br>            "authorId": "1",<br>            "authorName": "张三",<br>            "authorAvatar": "https://ui-avatars.com/api/?name=张三&background=0D8ABC&color=fff",<br>            "githubUrl": "https://github.com/example/astrabot-translate"<br>        }<br>    ],<br>    "all": [<br>        // 可以包含与featured相同的插件，也可以添加更多插件<br>    ]<br>}</pre>
+            </div>
+        </section>
+
+        <section class="mb-16 bg-white rounded-lg shadow-md p-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">数据同步说明</h2>
+            <p class="mb-4 text-gray-700">更新JSON文件后，无需重启服务器，刷新页面即可看到最新数据。</p>
+            <p class="text-gray-700">请确保JSON格式正确，否则可能导致页面无法正常加载数据。您可以使用在线JSON验证工具检查格式是否正确。</p>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <i class="fas fa-rocket text-indigo-400 text-2xl mr-2"></i>
+                        <h2 class="text-xl font-bold">AstrBot插件推荐</h2>
+                    </div>
+                    <p class="mt-2 text-gray-400">发现最佳的AstrBot插件</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="plugins.html" class="text-gray-400 hover:text-white transition-colors">推荐插件</a>
+                    <a href="authors.html" class="text-gray-400 hover:text-white transition-colors">按作者浏览</a>
+                    <a href="team.html" class="text-gray-400 hover:text-white transition-colors">网站成员</a>
+                    <a href="links.html" class="text-gray-400 hover:text-white transition-colors">友情链接</a>
+                    <a href="guide.html" class="text-gray-400 hover:text-white transition-colors">数据指南</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 AstrBot插件推荐. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

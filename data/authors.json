@@ -1,29 +1,20 @@
 [
     {
         "id": "1",
-        "name": "张三",
-        "avatar": "https://ui-avatars.com/api/?name=张三&background=0D8ABC&color=fff",
-        "bio": "资深AstrBot开发者，专注于实用工具类插件开发。",
-        "github": "https://github.com/author-zhang",
-        "twitter": "https://twitter.com/author-zhang",
-        "pluginCount": 2
+        "name": "lxfight",
+        "avatar": "https://github.com/lxfight.png",
+        "bio": "AstrBot插件开发者",
+        "github": "https://github.com/lxfight",
+        "twitter": null,
+        "pluginCount": 1
     },
     {
         "id": "2",
-        "name": "李四",
-        "avatar": "https://ui-avatars.com/api/?name=李四&background=0D8ABC&color=fff",
-        "bio": "热衷于开发提升用户体验的插件，尤其擅长生活服务类应用。",
-        "github": "https://github.com/author-li",
-        "twitter": "https://twitter.com/author-li",
-        "pluginCount": 2
-    },
-    {
-        "id": "3",
-        "name": "王五",
-        "avatar": "https://ui-avatars.com/api/?name=王五&background=0D8ABC&color=fff",
-        "bio": "全栈开发者，专注于提高开发效率的工具和插件。",
-        "github": "https://github.com/author-wang",
-        "twitter": "https://twitter.com/author-wang",
+        "name": "oyxning",
+        "avatar": "https://github.com/oyxning.png",
+        "bio": "AstrBot插件开发者",
+        "github": "https://github.com/oyxning",
+        "twitter": null,
         "pluginCount": 1
     }
 ]

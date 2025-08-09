@@ -41,16 +41,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     });
 
-    // 加载推荐插件
-    try {
-        const featuredPlugins = await dataLoader.getFeaturedPlugins();
-        if (document.getElementById('featured-plugins')) {
-            renderFeaturedPlugins(featuredPlugins);
-        }
-    } catch (error) {
-        console.error('加载推荐插件失败:', error);
-        showError('featured-plugins', '加载推荐插件失败');
-    }
+    // 加载推荐插件 (仅在有对应容器的页面执行)
+            try {
+                const featuredContainer = document.getElementById('featured-plugins');
+                if (featuredContainer) {
+                    const featuredPlugins = await dataLoader.getFeaturedPlugins();
+                    await renderFeaturedPlugins(featuredPlugins);
+                }
+            } catch (error) {
+                console.error('加载推荐插件失败:', error);
+                const featuredContainer = document.getElementById('featured-plugins');
+                if (featuredContainer) {
+                    showError('featured-plugins', '加载推荐插件失败');
+                }
+            }
 
     // 加载作者列表
     try {
@@ -77,7 +81,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 加载友情链接
     try {
         const friendLinks = await dataLoader.getFriendLinks();
-        if (document.getElementById('friend-links')) {
+        if (document.getElementById('links-container')) {
             renderFriendLinks(friendLinks);
         }
     } catch (error) {
@@ -106,7 +110,7 @@ document.addEventListener('DOMContentLoaded', async () => {
  * 渲染推荐插件
  * @param {Array} plugins - 插件列表
  */
-function renderFeaturedPlugins(plugins) {
+async function renderFeaturedPlugins(plugins) {
     const container = document.getElementById('featured-plugins');
     container.innerHTML = '';
 
@@ -115,9 +119,21 @@ function renderFeaturedPlugins(plugins) {
         return;
     }
 
-    plugins.forEach(plugin => {
+    for (const plugin of plugins) {
         const pluginCard = document.createElement('div');
         pluginCard.className = 'plugin-card bg-white rounded-lg shadow-md overflow-hidden fade-in';
+
+        // 获取作者信息
+        let authorName = '未知作者';
+        let authorAvatar = '/img/ys.jpg';
+        if (plugin.authorId) {
+            const author = await dataLoader.getAuthorById(plugin.authorId);
+            if (author) {
+                authorName = author.name;
+                authorAvatar = author.avatar || authorAvatar;
+            }
+        }
+
         pluginCard.innerHTML = `
             <div class="p-6">
                 <div class="flex items-center mb-4">
@@ -142,8 +158,8 @@ function renderFeaturedPlugins(plugins) {
                 </div>
                 <div class="flex justify-between items-center mt-6">
                     <div class="flex items-center">
-                        <img src="${plugin.authorAvatar || 'https://ui-avatars.com/api/?name=Unknown&background=0D8ABC&color=fff'}" alt="作者头像" class="w-8 h-8 rounded-full mr-2">
-                        <span class="text-sm text-gray-600">${plugin.authorName || '未知作者'}</span>
+                        <img src="${authorAvatar}" alt="作者头像" class="w-8 h-8 rounded-full mr-2">
+                        <span class="text-sm text-gray-600">${authorName}</span>
                     </div>
                     <a href="${plugin.githubUrl || '#'}" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:text-indigo-800 transition-colors flex items-center">
                         <i class="fab fa-github mr-1"></i> GitHub
@@ -152,7 +168,7 @@ function renderFeaturedPlugins(plugins) {
             </div>
         `;
         container.appendChild(pluginCard);
-    });
+    }
 }
 
 /**
@@ -170,9 +186,10 @@ function renderAuthors(authors) {
 
     authors.forEach(author => {
         const authorCard = document.createElement('div');
-        authorCard.className = 'author-card bg-white rounded-lg shadow-md p-6 text-center fade-in';
+        authorCard.className = 'author-card bg-white rounded-lg shadow-md p-6 text-center fade-in cursor-pointer hover:shadow-lg transition-shadow';
+        authorCard.setAttribute('data-author-id', author.id);
         authorCard.innerHTML = `
-            <img src="${author.avatar || 'https://ui-avatars.com/api/?name=Unknown&background=0D8ABC&color=fff'}" alt="${author.name}" class="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-white shadow-sm">
+            <img src="${author.avatar || '/img/ys.jpg'}" alt="${author.name}" class="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-white shadow-sm">
             <h3 class="text-xl font-semibold text-gray-800 mb-1">${author.name}</h3>
             <p class="text-gray-500 text-sm mb-3">${author.bio || '暂无简介'}</p>
             <div class="flex justify-center space-x-3 mb-4">
@@ -180,32 +197,155 @@ function renderAuthors(authors) {
                 ${author.twitter ? `<a href="${author.twitter}" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-600 transition-colors"><i class="fab fa-twitter text-xl"></i></a>` : ''}
             </div>
             <p class="text-sm text-gray-600 mb-2">插件数量: ${author.pluginCount || 0}</p>
-            <button class="view-author-plugins bg-indigo-100 text-indigo-700 px-4 py-1 rounded-full text-sm font-medium hover:bg-indigo-200 transition-colors" data-author-id="${author.id}">
-                查看插件
+            <button class="view-author-details bg-indigo-100 text-indigo-700 px-4 py-1 rounded-full text-sm font-medium hover:bg-indigo-200 transition-colors" data-author-id="${author.id}">
+                查看详情
             </button>
         `;
         container.appendChild(authorCard);
     });
 
-    // 添加作者插件查看按钮事件
-    document.querySelectorAll('.view-author-plugins').forEach(button => {
-        button.addEventListener('click', async (e) => {
-            const authorId = e.currentTarget.getAttribute('data-author-id');
-            try {
-                const authorPlugins = await dataLoader.getPluginsByAuthor(authorId);
-                // 滚动到插件区域
-                document.getElementById('featured').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                // 渲染作者的插件
-                renderFeaturedPlugins(authorPlugins);
-                // 更新标题
-                const author = authors.find(a => a.id === authorId);
-                document.querySelector('#featured h2').textContent = `${author ? author.name : '该作者'}的插件`;
-            } catch (error) {
-                console.error('加载作者插件失败:', error);
-                showError('featured-plugins', '加载作者插件失败');
+    // 添加作者卡片点击事件
+    document.querySelectorAll('.author-card, .view-author-details').forEach(element => {
+        element.addEventListener('click', async (e) => {
+            // 防止事件冒泡导致重复触发
+            e.stopPropagation();
+            const authorId = e.currentTarget.getAttribute('data-author-id') || e.target.closest('.author-card')?.getAttribute('data-author-id');
+            if (authorId) {
+                try {
+                    // 显示加载状态
+                    document.getElementById('author-detail').classList.remove('hidden');
+                    document.getElementById('author-info').innerHTML = '<div class="text-center py-16"><i class="fas fa-spinner text-4xl text-gray-400 mb-4 animate-spin"></i><p class="text-gray-500">加载作者详情中...</p></div>';
+                    document.getElementById('author-plugins-container').innerHTML = '<div class="text-center py-16"><i class="fas fa-spinner text-4xl text-gray-400 mb-4 animate-spin"></i><p class="text-gray-500">加载插件列表中...</p></div>';
+
+                    // 滚动到详情区域
+                    document.getElementById('author-detail').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                    // 获取作者详情和插件
+                    const author = authors.find(a => a.id === authorId);
+                    const authorPlugins = await dataLoader.getPluginsByAuthor(authorId);
+
+                    // 渲染作者详情
+                    renderAuthorDetails(author);
+                    // 渲染作者插件
+                    await renderAuthorPlugins(authorPlugins);
+                } catch (error) {
+                    console.error('加载作者详情失败:', error);
+                    showError('author-info', '加载作者详情失败');
+                    showError('author-plugins-container', '加载插件列表失败');
+                }
             }
         });
     });
+}
+
+/**
+ * 渲染作者详情
+ * @param {Object} author - 作者对象
+ */
+function renderAuthorDetails(author) {
+    if (!author) return;
+
+    // 确保元素存在后再设置属性
+    const titleElement = document.getElementById('author-detail-title');
+    if (titleElement) {
+        titleElement.textContent = `${author.name}的详情`;
+    }
+
+    const avatarElement = document.getElementById('author-avatar');
+    if (avatarElement) {
+        avatarElement.src = author.avatar || '/img/ys.jpg';
+        avatarElement.alt = author.name;
+    }
+
+    const nameElement = document.getElementById('author-name');
+    if (nameElement) {
+        nameElement.textContent = author.name;
+    }
+
+    const bioElement = document.getElementById('author-bio');
+    if (bioElement) {
+        bioElement.textContent = author.bio || '暂无简介';
+    }
+
+    const githubElement = document.getElementById('author-github');
+    if (githubElement) {
+        githubElement.href = author.github || '#';
+    }
+
+    const twitterElement = document.getElementById('author-twitter');
+    if (twitterElement) {
+        twitterElement.href = author.twitter || '#';
+    }
+
+    const pluginCountElement = document.getElementById('author-plugin-count');
+    if (pluginCountElement) {
+        pluginCountElement.textContent = `插件数量: ${author.pluginCount || 0}`;
+    }
+}
+
+/**
+ * 渲染作者插件
+ * @param {Array} plugins - 插件列表
+ */
+async function renderAuthorPlugins(plugins) {
+    const container = document.getElementById('author-plugins-container');
+    container.innerHTML = '';
+
+    if (plugins.length === 0) {
+        container.innerHTML = '<p class="text-gray-500 text-center col-span-full">该作者暂无插件</p>';
+        return;
+    }
+
+    for (const plugin of plugins) {
+        const pluginCard = document.createElement('div');
+        pluginCard.className = 'plugin-card bg-white rounded-lg shadow-md overflow-hidden fade-in';
+
+        // 获取作者信息
+        let authorName = '未知作者';
+        let authorAvatar = 'https://ui-avatars.com/api/?name=Unknown&background=0D8ABC&color=fff';
+        if (plugin.authorId) {
+            const author = await dataLoader.getAuthorById(plugin.authorId);
+            if (author) {
+                authorName = author.name;
+                authorAvatar = author.avatar || authorAvatar;
+            }
+        }
+
+        pluginCard.innerHTML = `
+            <div class="p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas ${plugin.icon || 'fa-puzzle-piece'} text-indigo-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800">${plugin.name}</h3>
+                        <div class="flex items-center mt-1">
+                            <div class="star-rating mr-2">
+                                ${generateStarRating(plugin.rating || 0)}
+                            </div>
+                            <span class="text-sm text-gray-500">(${plugin.reviews || 0})</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600 mb-4">${plugin.description}</p>
+                <div class="flex flex-wrap mb-4">
+                    ${plugin.tags ? plugin.tags.map(tag => `
+                        <span class="tag bg-indigo-100 text-indigo-800">${tag}</span>
+                    `).join('') : ''}
+                </div>
+                <div class="flex justify-between items-center mt-6">
+                    <div class="flex items-center">
+                        <img src="${authorAvatar}" alt="作者头像" class="w-8 h-8 rounded-full mr-2">
+                        <span class="text-sm text-gray-600">${authorName}</span>
+                    </div>
+                    <a href="${plugin.githubUrl || '#'}" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:text-indigo-800 transition-colors flex items-center">
+                        <i class="fab fa-github mr-1"></i> GitHub 仓库
+                    </a>
+                </div>
+            </div>
+        `;
+        container.appendChild(pluginCard);
+    }
 }
 
 /**
@@ -225,7 +365,7 @@ function renderTeamMembers(members) {
         const teamCard = document.createElement('div');
         teamCard.className = 'team-card bg-white rounded-lg shadow-md p-6 text-center fade-in';
         teamCard.innerHTML = `
-            <img src="${member.avatar || 'https://ui-avatars.com/api/?name=Unknown&background=0D8ABC&color=fff'}" alt="${member.name}" class="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-white shadow-sm">
+            <img src="${member.avatar || '/img/ys.jpg'}" alt="${member.name}" class="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-white shadow-sm">
             <h3 class="text-xl font-semibold text-gray-800 mb-1">${member.name}</h3>
             <p class="text-indigo-600 font-medium mb-3">${member.role}</p>
             <p class="text-gray-600 text-sm mb-4">${member.bio || '暂无简介'}</p>
@@ -242,9 +382,15 @@ function renderTeamMembers(members) {
 /**
  * 渲染友情链接
  * @param {Array} links - 友情链接列表
+ * @param {HTMLElement} container - 容器元素（可选）
  */
-function renderFriendLinks(links) {
-    const container = document.getElementById('friend-links');
+function renderFriendLinks(links, container = null) {
+    // 如果没有提供容器，尝试获取默认容器
+    if (!container) {
+        container = document.getElementById('friend-links') || document.getElementById('links-container');
+        if (!container) return;
+    }
+
     container.innerHTML = '';
 
     if (links.length === 0) {
@@ -257,10 +403,16 @@ function renderFriendLinks(links) {
         linkItem.href = link.url;
         linkItem.target = '_blank';
         linkItem.rel = 'noopener noreferrer';
-        linkItem.className = 'link-item';
+        linkItem.className = 'bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow';
         linkItem.innerHTML = `
-            ${link.icon ? `<i class="${link.icon} mr-2"></i>` : ''}
-            ${link.name}
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <i class="${link.icon || 'fas fa-link'} text-indigo-600 mr-3 text-xl"></i>
+                    <span class="font-medium text-gray-800">${link.name}</span>
+                </div>
+                <i class="fas fa-external-link-alt text-gray-400"></i>
+            </div>
+            <p class="text-sm text-gray-500 mt-2">${link.description || ''}</p>
         `;
         container.appendChild(linkItem);
     });

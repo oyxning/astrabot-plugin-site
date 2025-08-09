@@ -2,31 +2,31 @@
     {
         "id": "1",
         "name": "AstrBot 官方网站",
-        "url": "https://www.astrbos.com",
+        "url": "https://astrbot.app/",
         "icon": "fas fa-globe"
     },
     {
         "id": "2",
         "name": "AstrBot GitHub",
-        "url": "https://github.com/astrabot",
+        "url": "https://github.com/AstrBotDevs/AstrBot",
         "icon": "fab fa-github"
     },
     {
         "id": "3",
         "name": "开发者文档",
-        "url": "https://docs.astrabot.com",
+        "url": "https://docs.astrbot.app/",
         "icon": "fas fa-book"
     },
     {
         "id": "4",
-        "name": "社区论坛",
-        "url": "https://forum.astrabot.com",
-        "icon": "fas fa-comments"
+        "name": "社区",
+        "url": "https://qm.qq.com/cgi-bin/qm/qr?k=wtbaNx7EioxeaqS9z7RQWVXPIxg2zYr7&jump_from=webapi&authKey=vlqnv/AV2DbJEvGIcxdlNSpfxVy+8vVqijgreRdnVKOaydpc+YSw4MctmEbr0k5",
+        "icon": "fas fa-users"
     },
     {
         "id": "5",
         "name": "插件开发指南",
-        "url": "https://docs.astrabot.com/plugin-dev",
+        "url": "https://docs.astrbot.app/dev/core/overall_architecture.html",
         "icon": "fas fa-code"
     }
 ]

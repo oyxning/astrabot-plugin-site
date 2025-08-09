@@ -1,42 +1,12 @@
 [
     {
         "id": "1",
-        "name": "赵六",
-        "role": "项目负责人",
-        "avatar": "https://ui-avatars.com/api/?name=赵六&background=0D8ABC&color=fff",
-        "bio": "负责整体项目规划和协调，确保网站顺利运行和持续发展。",
-        "github": "https://github.com/team-leader",
-        "twitter": "https://twitter.com/team-leader",
-        "email": "leader@example.com"
-    },
-    {
-        "id": "2",
-        "name": "孙七",
-        "role": "前端开发",
-        "avatar": "https://ui-avatars.com/api/?name=孙七&background=0D8ABC&color=fff",
-        "bio": "专注于创建美观、响应式的用户界面，提升用户体验。",
-        "github": "https://github.com/frontend-dev",
-        "twitter": "https://twitter.com/frontend-dev",
-        "email": "frontend@example.com"
-    },
-    {
-        "id": "3",
-        "name": "周八",
-        "role": "后端开发",
-        "avatar": "https://ui-avatars.com/api/?name=周八&background=0D8ABC&color=fff",
-        "bio": "负责数据结构设计和API开发，确保网站性能和安全性。",
-        "github": "https://github.com/backend-dev",
-        "twitter": "https://twitter.com/backend-dev",
-        "email": "backend@example.com"
-    },
-    {
-        "id": "4",
-        "name": "吴九",
-        "role": "设计师",
-        "avatar": "https://ui-avatars.com/api/?name=吴九&background=0D8ABC&color=fff",
-        "bio": "负责网站视觉设计和用户体验优化，创造美观易用的界面。",
-        "github": "https://github.com/designer",
-        "twitter": "https://twitter.com/designer",
-        "email": "design@example.com"
+        "name": "oyxning",
+        "role": "网站运营",
+        "avatar": "https://github.com/oyxning.png",
+        "bio": "负责网站的日常运营和管理工作。",
+        "github": "https://github.com/oyxning",
+        "twitter": null,
+        "email": null
     }
 ]
