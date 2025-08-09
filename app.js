@@ -1,6 +1,10 @@
 // 页面加载完成后执行
 // 版本: 1.0.5 (全新创建)
+console.log('app.js文件已加载');
+window.dataLoader = new DataLoader();
+console.log('DataLoader实例已创建');
 document.addEventListener('DOMContentLoaded', async () => {
+    console.log('页面加载完成，开始初始化...');
     // 导航栏滚动效果
     const navbar = document.getElementById('navbar');
     if (navbar) {
@@ -207,81 +211,75 @@ function renderAuthors(authors) {
     // 添加作者卡片点击事件
     document.querySelectorAll('.author-card, .view-author-details').forEach(element => {
         element.addEventListener('click', async (e) => {
-            // 防止事件冒泡导致重复触发
-            e.stopPropagation();
-            const authorId = e.currentTarget.getAttribute('data-author-id') || e.target.closest('.author-card')?.getAttribute('data-author-id');
-            if (authorId) {
-                try {
-                    // 显示加载状态
-                    document.getElementById('author-detail').classList.remove('hidden');
-                    document.getElementById('author-info').innerHTML = '<div class="text-center py-16"><i class="fas fa-spinner text-4xl text-gray-400 mb-4 animate-spin"></i><p class="text-gray-500">加载作者详情中...</p></div>';
-                    document.getElementById('author-plugins-container').innerHTML = '<div class="text-center py-16"><i class="fas fa-spinner text-4xl text-gray-400 mb-4 animate-spin"></i><p class="text-gray-500">加载插件列表中...</p></div>';
+                // 防止事件冒泡导致重复触发
+                e.stopPropagation();
+                console.log('作者卡片被点击');
+                const authorId = e.currentTarget.getAttribute('data-author-id') || e.target.closest('.author-card')?.getAttribute('data-author-id');
+                console.log('获取到的作者ID:', authorId);
+                if (authorId) {
+                    try {
+                        // 显示加载状态
+                        const authorDetailElement = document.getElementById('author-detail');
+                        const authorPluginsContainer = document.getElementById('author-plugins-container');
 
-                    // 滚动到详情区域
-                    document.getElementById('author-detail').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        if (authorDetailElement) {
+                            authorDetailElement.classList.remove('hidden');
+                            // 更新标题
+                            const titleElement = document.getElementById('author-detail-title');
+                            if (titleElement) {
+                                titleElement.textContent = `作者插件`;
+                            }
+                        } else {
+                            console.error('未找到author-detail元素');
+                        }
 
-                    // 获取作者详情和插件
-                    const author = authors.find(a => a.id === authorId);
-                    const authorPlugins = await dataLoader.getPluginsByAuthor(authorId);
+                        if (authorPluginsContainer) {
+                            authorPluginsContainer.innerHTML = '<div class="text-center py-16"><i class="fas fa-spinner text-4xl text-gray-400 mb-4 animate-spin"></i><p class="text-gray-500">加载插件列表中...</p></div>';
+                        } else {
+                            console.error('未找到author-plugins-container元素');
+                        }
 
-                    // 渲染作者详情
-                    renderAuthorDetails(author);
-                    // 渲染作者插件
-                    await renderAuthorPlugins(authorPlugins);
-                } catch (error) {
-                    console.error('加载作者详情失败:', error);
-                    showError('author-info', '加载作者详情失败');
-                    showError('author-plugins-container', '加载插件列表失败');
+                        // 滚动到详情区域
+                        if (authorDetailElement) {
+                            authorDetailElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+
+                        // 获取作者详情和插件
+                        console.log('加载作者详情，ID:', authorId);
+                        const author = await dataLoader.getAuthorById(authorId);
+                        console.log('作者数据:', author);
+                        const authorPlugins = await dataLoader.getPluginsByAuthor(authorId);
+                        console.log('作者插件数量:', authorPlugins.length);
+
+                        // 如果作者不存在，显示错误信息
+                        if (!author) {
+                            console.error('未找到作者数据');
+                            if (authorInfoElement) {
+                                authorInfoElement.innerHTML = '<div class="text-center py-16"><p class="text-red-500 font-medium">错误: 未找到该作者</p></div>';
+                            }
+                            if (authorPluginsContainer) {
+                                authorPluginsContainer.innerHTML = '<div class="text-center py-16"><p class="text-red-500 font-medium">错误: 未找到该作者的插件</p></div>';
+                            }
+                            return;
+                        }
+
+                        // 直接渲染作者插件
+                        await renderAuthorPlugins(authorPlugins);
+                    } catch (error) {
+                        console.error('加载作者插件失败:', error);
+                        const authorPluginsContainer = document.getElementById('author-plugins-container');
+                        if (authorPluginsContainer) {
+                            authorPluginsContainer.innerHTML = `<div class="text-center py-16"><p class="text-red-500 font-medium">错误: ${error.message}</p></div>`;
+                        }
+                    }
+                } else {
+                    console.error('未获取到作者ID');
                 }
-            }
-        });
+            });
     });
 }
 
-/**
- * 渲染作者详情
- * @param {Object} author - 作者对象
- */
-function renderAuthorDetails(author) {
-    if (!author) return;
 
-    // 确保元素存在后再设置属性
-    const titleElement = document.getElementById('author-detail-title');
-    if (titleElement) {
-        titleElement.textContent = `${author.name}的详情`;
-    }
-
-    const avatarElement = document.getElementById('author-avatar');
-    if (avatarElement) {
-        avatarElement.src = author.avatar || '/img/ys.jpg';
-        avatarElement.alt = author.name;
-    }
-
-    const nameElement = document.getElementById('author-name');
-    if (nameElement) {
-        nameElement.textContent = author.name;
-    }
-
-    const bioElement = document.getElementById('author-bio');
-    if (bioElement) {
-        bioElement.textContent = author.bio || '暂无简介';
-    }
-
-    const githubElement = document.getElementById('author-github');
-    if (githubElement) {
-        githubElement.href = author.github || '#';
-    }
-
-    const twitterElement = document.getElementById('author-twitter');
-    if (twitterElement) {
-        twitterElement.href = author.twitter || '#';
-    }
-
-    const pluginCountElement = document.getElementById('author-plugin-count');
-    if (pluginCountElement) {
-        pluginCountElement.textContent = `插件数量: ${author.pluginCount || 0}`;
-    }
-}
 
 /**
  * 渲染作者插件
@@ -302,7 +300,7 @@ async function renderAuthorPlugins(plugins) {
 
         // 获取作者信息
         let authorName = '未知作者';
-        let authorAvatar = 'https://ui-avatars.com/api/?name=Unknown&background=0D8ABC&color=fff';
+        let authorAvatar = '/img/ys.jpg';
         if (plugin.authorId) {
             const author = await dataLoader.getAuthorById(plugin.authorId);
             if (author) {
