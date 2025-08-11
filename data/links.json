@@ -28,5 +28,11 @@
         "name": "插件开发指南",
         "url": "https://docs.astrbot.app/dev/core/overall_architecture.html",
         "icon": "fas fa-code"
+    },
+    {
+        "id": "6",
+        "name": "官方插件市场",
+        "url": "https://plugins.astrbot.app/#/",
+        "icon": "fas fa-store"
     }
 ]
