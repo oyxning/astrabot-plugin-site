@@ -7,10 +7,6 @@
 1. 主平台: [https://plugins.astrbot.app/#/](https://plugins.astrbot.app/#/)
 2. 本平台: [线上地址](https://abplugin.xdydm.top/) 
 
-## 关于本项目
-
-本仓库包含了 AstrBot 插件推荐网站的源代码，是官方认可的平台之一。
-
 ## 更新日志
 
 ### 2025-08-11
