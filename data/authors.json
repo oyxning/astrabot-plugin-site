@@ -6,7 +6,7 @@
         "bio": "AstrBot插件开发者",
         "github": "https://github.com/lxfight",
         "twitter": null,
-        "pluginCount": 1
+        "pluginCount": 2
     },
     {
         "id": "2",
@@ -14,6 +14,42 @@
         "avatar": "https://github.com/oyxning.png",
         "bio": "AstrBot插件开发者",
         "github": "https://github.com/oyxning",
+        "twitter": null,
+        "pluginCount": 1
+    },
+    {
+        "id": "3",
+        "name": "advent259141",
+        "avatar": "https://github.com/advent259141.png",
+        "bio": "AstrBot插件开发者",
+        "github": "https://github.com/advent259141",
+        "twitter": null,
+        "pluginCount": 1
+    },
+    {
+        "id": "4",
+        "name": "Zhalslar",
+        "avatar": "https://github.com/Zhalslar.png",
+        "bio": "AstrBot插件开发者",
+        "github": "https://github.com/Zhalslar",
+        "twitter": null,
+        "pluginCount": 2
+    },
+    {
+        "id": "5",
+        "name": "Soulter",
+        "avatar": "https://github.com/Soulter.png",
+        "bio": "AstrBot插件开发者",
+        "github": "https://github.com/Soulter",
+        "twitter": null,
+        "pluginCount": 1
+    },
+    {
+        "id": "6",
+        "name": "tinkerbellqwq",
+        "avatar": "https://github.com/tinkerbellqwq.png",
+        "bio": "AstrBot插件开发者",
+        "github": "https://github.com/tinkerbellqwq",
         "twitter": null,
         "pluginCount": 1
     }

@@ -21,6 +21,72 @@
             "rating": 5,
             "reviews": 5,
             "tags": ["安全", "防护", "反注入"]
+        },
+        {
+            "id": "3",
+            "name": "心流插件 (Heartflow)",
+            "description": "基于双LLM架构设计的简单心流模式智能群聊主动回复系统。",
+            "authorId": "3",
+            "githubUrl": "https://github.com/advent259141/Astrbot_plugin_Heartflow",
+            "icon": "fa-brain",
+            "rating": 4.8,
+            "reviews": 20,
+            "tags": ["智能回复", "群聊", "LLM", "双模型"]
+        },
+        {
+            "id": "4",
+            "name": "Mnemosyne - 长期记忆中枢",
+            "description": "一个AstrBot插件，实现基于RAG技术的长期记忆功能。让AI真正记住与你的每一次对话，构建持久的个性化体验。",
+            "authorId": "1",
+            "githubUrl": "https://github.com/lxfight/astrbot_plugin_mnemosyne",
+            "icon": "fa-memory",
+            "rating": 4.9,
+            "reviews": 30,
+            "tags": ["记忆", "RAG", "长期记忆", "向量数据库"]
+        },
+        {
+            "id": "5",
+            "name": "astrbot QQ群管插件",
+            "description": "群管插件，功能包括：禁言、全体禁言、踢人、拉黑、改群昵称、改头衔、设管理员、设精华、撤回消息、改群头像、改群名、发群公告、整理群友信息、宵禁、违禁词等等。",
+            "authorId": "4",
+            "githubUrl": "https://github.com/Zhalslar/astrbot_plugin_QQAdmin",
+            "icon": "fa-crown",
+            "rating": 4.7,
+            "reviews": 25,
+            "tags": ["QQ", "群管理", "工具", "管理"]
+        },
+        {
+            "id": "6",
+            "name": "AstrBot Bilibili插件",
+            "description": "为AstrBot设计的多功能Bilibili插件，支持视频解析、UP主动态订阅、推荐番剧等功能。",
+            "authorId": "5",
+            "githubUrl": "https://github.com/Soulter/astrbot_plugin_bilibili",
+            "icon": "fa-video",
+            "rating": 4.8,
+            "reviews": 28,
+            "tags": ["Bilibili", "视频", "动态订阅", "番剧"]
+        },
+        {
+            "id": "7",
+            "name": "AstrBot帮助插件",
+            "description": "提供AstrBot相关帮助信息和指南的插件。",
+            "authorId": "6",
+            "githubUrl": "https://github.com/tinkerbellqwq/astrbot_plugin_help",
+            "icon": "fa-question-circle",
+            "rating": 4.5,
+            "reviews": 15,
+            "tags": ["帮助", "指南", "文档"]
+        },
+        {
+            "id": "8",
+            "name": "astrbot 人际关系管理器",
+            "description": "为astrbot提供的人际关系管理器，功能包括查看好友列表、查看群列表、审批好友申请、审批群邀请、删好友、退群等。",
+            "authorId": "4",
+            "githubUrl": "https://github.com/Zhalslar/astrbot_plugin_relationship",
+            "icon": "fa-users",
+            "rating": 4.6,
+            "reviews": 22,
+            "tags": ["人际关系", "管理", "好友", "群聊"]
         }
     ],
     "all": [
@@ -45,6 +111,72 @@
             "rating": 5,
             "reviews": 5,
             "tags": ["安全", "防护", "反注入"]
+        },
+        {
+            "id": "3",
+            "name": "心流插件 (Heartflow)",
+            "description": "基于双LLM架构设计的简单心流模式智能群聊主动回复系统。",
+            "authorId": "3",
+            "githubUrl": "https://github.com/advent259141/Astrbot_plugin_Heartflow",
+            "icon": "fa-brain",
+            "rating": 4.8,
+            "reviews": 20,
+            "tags": ["智能回复", "群聊", "LLM", "双模型"]
+        },
+        {
+            "id": "4",
+            "name": "Mnemosyne - 长期记忆中枢",
+            "description": "一个AstrBot插件，实现基于RAG技术的长期记忆功能。让AI真正记住与你的每一次对话，构建持久的个性化体验。",
+            "authorId": "1",
+            "githubUrl": "https://github.com/lxfight/astrbot_plugin_mnemosyne",
+            "icon": "fa-memory",
+            "rating": 4.9,
+            "reviews": 30,
+            "tags": ["记忆", "RAG", "长期记忆", "向量数据库"]
+        },
+        {
+            "id": "5",
+            "name": "astrbot QQ群管插件",
+            "description": "群管插件，功能包括：禁言、全体禁言、踢人、拉黑、改群昵称、改头衔、设管理员、设精华、撤回消息、改群头像、改群名、发群公告、整理群友信息、宵禁、违禁词等等。",
+            "authorId": "4",
+            "githubUrl": "https://github.com/Zhalslar/astrbot_plugin_QQAdmin",
+            "icon": "fa-crown",
+            "rating": 4.7,
+            "reviews": 25,
+            "tags": ["QQ", "群管理", "工具", "管理"]
+        },
+        {
+            "id": "6",
+            "name": "AstrBot Bilibili插件",
+            "description": "为AstrBot设计的多功能Bilibili插件，支持视频解析、UP主动态订阅、推荐番剧等功能。",
+            "authorId": "5",
+            "githubUrl": "https://github.com/Soulter/astrbot_plugin_bilibili",
+            "icon": "fa-video",
+            "rating": 4.8,
+            "reviews": 28,
+            "tags": ["Bilibili", "视频", "动态订阅", "番剧"]
+        },
+        {
+            "id": "7",
+            "name": "AstrBot帮助插件",
+            "description": "提供AstrBot相关帮助信息和指南的插件。",
+            "authorId": "6",
+            "githubUrl": "https://github.com/tinkerbellqwq/astrbot_plugin_help",
+            "icon": "fa-question-circle",
+            "rating": 4.5,
+            "reviews": 15,
+            "tags": ["帮助", "指南", "文档"]
+        },
+        {
+            "id": "8",
+            "name": "astrbot 人际关系管理器",
+            "description": "为astrbot提供的人际关系管理器，功能包括查看好友列表、查看群列表、审批好友申请、审批群邀请、删好友、退群等。",
+            "authorId": "4",
+            "githubUrl": "https://github.com/Zhalslar/astrbot_plugin_relationship",
+            "icon": "fa-users",
+            "rating": 4.6,
+            "reviews": 22,
+            "tags": ["人际关系", "管理", "好友", "群聊"]
         }
     ]
 }
