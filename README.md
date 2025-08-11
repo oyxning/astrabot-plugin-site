@@ -4,7 +4,7 @@
 
 本网站已恢复运营！
 
-1. 主平台: [https://plugins.astrbot.app/#/](https://plugins.astrbot.app/#/)
+1. 官方平台: [https://plugins.astrbot.app/#/](https://plugins.astrbot.app/#/)
 2. 本平台: [线上地址](https://abplugin.xdydm.top/) 
 
 ## 更新日志
