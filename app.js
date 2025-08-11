@@ -97,6 +97,29 @@ document.addEventListener('DOMContentLoaded', async () => {
     const searchInput = document.getElementById('search-input');
     const searchBtn = document.getElementById('search-btn');
 
+    // 复制链接功能
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.copy-link-btn')) {
+            const btn = e.target.closest('.copy-link-btn');
+            const url = btn.getAttribute('data-url');
+            navigator.clipboard.writeText(url).then(() => {
+                // 显示复制成功提示
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check mr-1"></i> 已复制';
+                btn.classList.remove('text-gray-600', 'hover:text-indigo-600');
+                btn.classList.add('text-green-600');
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('text-green-600');
+                    btn.classList.add('text-gray-600', 'hover:text-indigo-600');
+                }, 2000);
+            }).catch(err => {
+                console.error('复制失败:', err);
+                alert('复制失败，请手动复制');
+            });
+        }
+    });
+
     if (searchInput && searchBtn) {
         searchBtn.addEventListener('click', async () => {
             await performSearch();
@@ -161,14 +184,19 @@ async function renderFeaturedPlugins(plugins) {
                     `).join('') : ''}
                 </div>
                 <div class="flex justify-between items-center mt-6">
-                    <div class="flex items-center">
-                        <img src="${authorAvatar}" alt="作者头像" class="w-8 h-8 rounded-full mr-2">
-                        <span class="text-sm text-gray-600">${authorName}</span>
+                        <div class="flex items-center">
+                            <img src="${authorAvatar}" alt="作者头像" class="w-8 h-8 rounded-full mr-2">
+                            <span class="text-sm text-gray-600">${authorName}</span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <a href="${plugin.githubUrl || '#'}" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:text-indigo-800 transition-colors flex items-center">
+                                <i class="fab fa-github mr-1"></i> GitHub
+                            </a>
+                            <button class="copy-link-btn text-gray-600 hover:text-indigo-600 transition-colors flex items-center" data-url="${plugin.githubUrl || '#'}">
+                                <i class="fas fa-link mr-1"></i> 复制链接
+                            </button>
+                        </div>
                     </div>
-                    <a href="${plugin.githubUrl || '#'}" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:text-indigo-800 transition-colors flex items-center">
-                        <i class="fab fa-github mr-1"></i> GitHub
-                    </a>
-                </div>
             </div>
         `;
         container.appendChild(pluginCard);

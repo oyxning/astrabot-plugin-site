@@ -9,6 +9,39 @@
 /* 卡片样式 */
 .plugin-card, .author-card, .team-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 插件名称样式 - 固定高度，防止换行导致的高度不一致 */
+.plugin-card h3 {
+    height: 2.5rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+/* 插件描述样式 - 固定高度，防止文本长度不同导致的高度不一致 */
+.plugin-card p.text-gray-600.mb-4 {
+    height: 4.5rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+/* 标签容器样式 - 固定高度，防止标签过多导致的高度不一致 */
+.plugin-card .flex.flex-wrap.mb-4 {
+    max-height: 5rem;
+    overflow-y: hidden;
+    margin-top: auto;
+}
+
+/* 确保卡片底部区域对齐 */
+.plugin-card .flex.justify-between.items-center.mt-6 {
+    margin-top: auto;
 }
 
 .plugin-card:hover, .author-card:hover, .team-card:hover {
